@@ -1,0 +1,296 @@
+@font-face {
+    font-family: "Cygnito Mono";
+    src: url("/static/fonts/CygnitoMono.woff") format('woff'),
+         url("/static/fonts/CygnitoMono.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Noto Sans Mono";
+    src: url("/static/fonts/NotoSansMono.woff") format('woff'),
+         url("/static/fonts/NotoSansMono.woff2") format('woff2');
+}
+
+:root {
+    --border-color: #D1D9E6;
+    --shadow-dark-color: #D1D9E6;
+    --shadow-light-color: #FFFFFF;
+    --main-background-color: #FAF9F6;
+    --form-background-color: #F7F6F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Noto Sans Mono;
+    background-color: var(--main-background-color);
+}
+
+/* Estilo general para cualquier enlace */
+a {
+    color: black;
+    text-decoration: none;
+}
+
+main {
+    width: 100%;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto para cambiar de iniciar sesión a registrarse */
+#check_flip {
+    display: none;
+}
+
+#check_flip:checked ~ #flip_card {
+    transform: rotateY(180deg);
+}
+
+#create_account {
+    transform: rotateY(180deg);
+}
+
+#flip_card {
+    width: 330px;
+    height: 380px;
+    min-width: 330px;
+    perspective: 1500px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+
+/* Estilos para formularios: iniciar sesión y crear cuenta */
+.login_forms {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    border: 1px solid var(--border-color);
+    background-color: var(--form-background-color);
+    box-shadow: 6px 6px 12px var(--shadow-dark-color), -6px -6px 12px var(--shadow-light-color);
+}
+
+/* Formulario: encabezado */
+.form_header {
+    /* height: 28%; */
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#create_account .form_header {
+    height: 21%;
+}
+
+#create_account .form_body {
+    height: 75%;
+}
+
+#login_user.form_header {
+    height: 21%;
+}
+
+#login_user .form_body {
+    height: 70%;
+}
+
+#login_user .form_header h3 {
+    margin-top: 10px;
+}
+
+.form_header h2 {
+    font-weight: 100;
+    font-family: Cygnito Mono;
+}
+
+.form_header p {
+    font-size: 13px;
+}
+
+.form_header h3 {
+    font-weight: normal;
+}
+
+/* Formulario: cuerpo */
+.form_body {
+    /* height: 72%; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Estilos para los campos de entrada */
+.input_group, .input_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login_user .input_group {
+    margin-top: 20px;
+}
+
+.input_group {
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.input_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid var(--border-color);
+}
+
+.input_data {
+    width: 220px;
+    height: 30px;
+    outline: none;
+    padding-left: 5px;
+    border-radius: 0 4px 4px 0;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark-color), inset -3px -3px 7px var(--shadow-light-color);
+}
+
+.input_data:focus {
+    box-shadow: inset 3px 3px 3px var(--shadow-dark-color), inset -3px -3px 8px var(--shadow-light-color);
+}
+
+/* Estilo para mensajes de error */
+.input_errors {
+    width: 252px;
+    height: 20px;
+    font-size: 11.5px;
+    justify-content: right;
+}
+
+.input_errors li {
+    list-style: none;
+}
+
+/* Estilos para opciones de recuérdanme y olvidar contraseña */
+#options_group {
+    width: 100%;
+    display: flex;
+    padding: 0 35px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    font-size: 10.5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#options_group a:hover {
+    text-decoration: underline;
+}
+
+#remember_session {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#remember_session input {
+    margin: auto 5px;
+}
+
+/* Estilos para botón de formulario */
+.form_btn {
+    width: 250px;
+    height: 30px;
+    cursor: pointer;
+    font-family: Noto Sans Mono;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    box-shadow: 3px 3px 6px var(--shadow-dark-color), -3px -3px 6px var(--shadow-light-color);
+}
+
+.form_btn:hover {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark-color), inset -3px -3px 7px var(--shadow-light-color);
+}
+
+/* Estilos para la opción de cambiar tarjeta */
+.change_group {
+    font-size: 11.5px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.lbl_change {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.lbl_change:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para ventanas modal */
+.modal {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    transition: all 0.7s;
+    pointer-events: none;
+    justify-content: center;
+    background-color: rgba(248, 248, 248, 0.7);
+}
+
+#forgot_password:target, #credentials_spotify:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal_content {
+    padding: 10px;
+    border-radius: 8px;
+    border: 0.2px solid var(--border-color);
+    background-color: var(--form-background-color);
+    box-shadow: 6px 6px 12px var(--shadow-dark-color), -6px -6px 12px var(--shadow-light-color);
+}
+
+.modal_header {
+    display: flex;
+    padding-right: 8px;
+    align-items: center;
+    justify-content: right;
+}
+
+.modal_body form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal_body p {
+    padding: 8px;
+    font-size: 11px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.modal_body .form_btn {
+    margin-bottom: 10px;
+}

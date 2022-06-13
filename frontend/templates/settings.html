@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/settings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header_nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer_marquee.css' %}">
+    <!-- Íconos -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/c01c9a85f3.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>TME_001</title>
+</head>
+<body>
+    <!-- Encabezado de navegación -->
+    {% include 'fixed_elements/header_nav.html' %}
+
+    <!-- Contenido principal -->
+    <main id="data_configuration">
+        <section id="data_general">
+            <h2 class="section_title">General</h2>
+            <div class="accordion">
+                <div class="rows_accordion">
+                    <a href="#change_username" class="edit_data">
+                        <div class="show_data">
+                            <h3 class="data_field">Nombre de usuario</h3>
+                            <span class="data_value">{{ request.user.username }}</span>
+                            <span class="edit">Editar</span>
+                        </div>
+                    </a>
+                    <form action="{% url 'frontend:settings' %}" method="post" class="expandable" id="change_username">
+                        {% csrf_token %}
+                        <input type="text" value="{{ request.user.username }}" class="input_data" name="username">
+                        <div class="input_errors">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if 'error_username' in message.tags %}
+                                        <style>
+                                            #change_username .input_data {
+                                                border-color: #BB2205;
+                                            }
+                                            #change_username  {
+                                                height: auto;
+                                                padding-top: 1em;
+                                                padding-bottom: 1em;
+                                            }
+                                        </style>
+                                        {{ message }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="btn_content">
+                            <button type="submit" class="form_btn" name="save_username">Guardar</button>
+                            <a href="" class="form_btn">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="rows_accordion">
+                    <a href="#change_email" class="edit_data">
+                        <div class="show_data">
+                            <h3 class="data_field">Correo electrónico</h3>
+                            <span class="data_value">{{ request.user.email }}</span>
+                            <span class="edit">Editar</span>
+                        </div>
+                    </a>
+                    <form action="{% url 'frontend:settings' %}" method="post" class="expandable" id="change_email">
+                        {% csrf_token %}
+                        <input type="text" value="{{ request.user.email }}" class="input_data" name="email">
+                        <div class="input_errors">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if 'error_email' in message.tags %}
+                                        <style>
+                                            #change_email .input_data {
+                                                border-color: #BB2205;
+                                            }
+                                            #change_email {
+                                                height: auto;
+                                                padding-top: 1em;
+                                                padding-bottom: 1em;
+                                            }
+                                        </style>
+                                        {{ message }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="btn_content">
+                            <button type="submit" class="form_btn" name="save_email">Guardar</button>
+                            <a href="" class="form_btn">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="rows_accordion">
+                    <a href="#change_password" class="edit_data">
+                        <div class="show_data">
+                            <h3 class="data_field">Contraseña</h3>
+                            <span class="data_value"></span>
+                            <span class="edit">Cambiar</span>
+                        </div>
+                    </a>
+                    <form action="{% url 'frontend:settings' %}" method="post" class="expandable" id="change_password">
+                        {% csrf_token %}
+                        <input type="password" placeholder="Nueva contraseña" class="input_data" name="new_password" id="new_password">
+                        <input type="password" placeholder="Confirmar contraseña" class="input_data" name="password">
+                        <div class="input_errors">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if 'error_password' in message.tags %}
+                                        <style>
+                                            #change_password .input_data {
+                                                border-color: #BB2205;
+                                            }
+                                            #change_password {
+                                                height: auto;
+                                                padding-top: 1em;
+                                                padding-bottom: 1em;
+                                            }
+                                        </style>
+                                        {{ message }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="btn_content">
+                            <button type="submit" class="form_btn" name="save_password">Guardar</button>
+                            <a href="" class="form_btn">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="data_spotify">
+            <h2 class="section_title">Spotify</h2>
+            <div class="accordion">
+                <div class="rows_accordion">
+                    <a href="{% url 'spotify:current_user' %}" class="edit_data">
+                        <div class="show_data">
+                            <h3 class="data_field">Nombre de usuario</h3>
+                            <span class="data_value">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if 'current_user' in message.tags %}
+                                            {{ message }}
+                                            <style>
+                                                #show_user {
+                                                    display: none;
+                                                }
+                                            </style>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </span>
+                            <span class="edit" id="show_user">Ver</span>
+                        </div>
+                    </a>
+                    <form action="{% url 'frontend:settings' %}" method="post" class="expandable" id="delete_access">
+                        {% csrf_token %}
+                        <h3>Prueba 
+                            
+                        </h3>
+                        <div class="btn_content">
+                            <button type="submit" class="form_btn" name="save_password">Guardar</button>
+                            <a href="" class="form_btn">Eliminar acceso</a>
+                        </div>
+                    </form>
+                </div>
+                <p class="data_message">Si deseas eliminar el acceso, puedes hacerlo desde 
+                    <a class="data_link" href="https://www.spotify.com/account/apps/">aquí</a>.
+                </p> 
+            </div>
+        </section>
+    </main>
+    
+    {% include 'fixed_elements/footer_marquee.html' %}
+</body>
+</html>

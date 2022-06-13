@@ -1,0 +1,49 @@
+<form action=""  method="post" class="login_forms" id="create_account">
+    {% csrf_token %}
+    <div class="form_header">
+        <h2>TME_001</h2>
+        <p>prototype</p>
+        <h3>Crear cuenta</h3>
+    </div>
+    <div class="form_body">
+        {% for field in create_form %}
+            <div class="input_group">
+                <div class="input_icon">
+                    <i class = "
+                        {% if field.name == 'create_username' %}
+                            fa-solid fa-user-astronaut
+                        {% elif field.name == 'create_email' %}
+                            fa-solid fa-envelope
+                        {% elif field.name == 'create_password' or  field.name == 'repassword'%}
+                            fa-solid fa-key
+                        {% endif %}
+                    "></i>
+                </div>
+                {{ field }}
+            </div>
+            <div class="input_errors" id="error_{{ field.name }}">
+                {% if field.errors %}
+                    <style>
+                        {% if field.name == 'repassword' %}
+                            #create_password {
+                                border-color: #BB2205;
+                            }
+                        {% endif %}
+                        #{{ field.name }} {
+                            border-color: #BB2205;
+                        }
+
+                        #error_{{ field.name }} {
+                            margin-bottom: 3px;
+                        }
+                    </style>
+                    {{ field.errors }}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="form_btn" name='save_account'>Crear cuenta</button>
+        <div class="change_group">
+            <span>¿Ya tienes una cuenta?</span>
+            <label for="check_flip" class="lbl_change" onclick="clean_form('create_account')">Inicia sesión</label>
+        </div>
+</form>

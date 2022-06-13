@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer_marquee.css' %}">
+    <!-- Íconos -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/c01c9a85f3.js" crossorigin="anonymous"></script>
+    <title>TME_001</title>
+</head>
+<body>
+    <!-- Elemento principal en el que se mostrarán las tarjetas -->
+    <main>
+        {% if create_form.errors %}
+            <style>
+                #create_account {
+                    transform: rotateY(0deg);
+                }
+                #create_account .input_group {
+                    border-color: #BB2205;
+                }
+                #login_user {
+                    transform: rotateY(-180deg);
+                }
+            </style>
+        {% endif %}
+
+        <!-- Checkbox para activar el efecto -->
+        <input type="checkbox" name="" id="check_flip">
+        <!-- Elemento en el que se realizará el cambio de tarjetas -->
+        <div id="flip_card">
+            <!-- Iniciar sesión -->
+            {% include 'login/login_user.html' %}
+
+            <!-- Crear cuenta -->
+            {% include 'login/create_account.html' %}
+        </div>
+    </main>  
+    {% include 'fixed_elements/footer_marquee.html' %}
+
+    <!-- Ventana para el caso de olvidar contraseña -->
+    {% include 'login/forgot_password.html' %}
+
+    <!-- Ventana para pedir sus datos de Spotify -->
+    {% comment %} {% include 'login/credentials_spotify.html' %} {% endcomment %}
+
+    <!-- Script para limpiar campos de entrada si se cambia de tarjeta -->
+    <script>
+        function clean_form(id_formulario){
+            document.getElementById(id_formulario).reset()
+        }
+    </script>
+</body>
+</html>

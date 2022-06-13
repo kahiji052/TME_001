@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header_nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer_marquee.css' %}">
+    <!-- Íconos -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/c01c9a85f3.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>TME_001</title>
+</head>
+<body>
+    {% include 'fixed_elements/header_nav.html' %}
+    <main>
+        <form action="" method="post" id="contact_form">
+            {% csrf_token %}
+            <div class="contact_labels">
+                <h2>¡Escríbenos!</h2>
+                <p>Completa el siguiente formulario si tienes alguna pregunta
+                    o feedback para comunicarte con nosotros.
+                </p>
+            </div>
+            <div class="input_group">
+                <input type="text" name="user" placeholder="Nombre" class="input_data">
+                <input type="email" name="user_email" id="" placeholder="Correo electrónico" class="input_data">
+            </div>
+            <textarea name="user_message" id="input_message" cols="30" rows="10" class="input_data" placeholder="Mensaje"></textarea>
+            <div class="btn_content">
+                <button type="submit" class="form_btn" name="send_mail">Enviar</button>
+            </div>
+        </form>
+        {% comment %} <div id="flip_card">
+            <div id="introduction_card" class="contact_card">
+                <div class="card_image"></div>
+                <div class="card_body">
+                    <h3 class="contact_name">Juan Carlos Hurtado</h3>
+                    <span class="contact_profession">Software & Data Engineering</span>
+                </div>
+            </div>
+            <div id="info_card" class="contact_card"></div>
+        </div> {% endcomment %}
+    </main>
+    {% include 'fixed_elements/footer_marquee.html' %}
+</body>
+</html>

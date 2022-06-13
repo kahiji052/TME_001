@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header_nav.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav_logo">
+                {% load static %}
+                <a href="{% url 'frontend:home' %}"><img src="{% static 'img/cuadrada.png' %}" width="40px" height="40px"></a>
+                {% comment %} <a href="">TME_001</a> {% endcomment %}
+            </div>
+            <div class="nav_user">
+                <input type="checkbox" id="btn_user_list">
+                <label for="btn_user_list">
+                    {{ request.user.username }}
+                    <i id="chevron" class="fa-solid fa-chevron-down"></i>
+                </label>
+                <div class="user_list">
+                    <ul class="options_row">
+                        <li><a href="{% url 'frontend:home' %}"><ion-icon name="musical-notes-outline"></ion-icon></a></li>
+                        <li><a href="{% url 'frontend:contact' %}"><ion-icon name="mail-outline"></ion-icon></a></li>
+                    </ul>
+                    <ul class="options_row">
+                        <li><a href="{% url 'frontend:settings' %}"><ion-icon name="settings-outline"></ion-icon></a></li>
+                        <li><a href="{% url 'frontend:logout' %}"><ion-icon name="log-out-outline"></ion-icon></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>

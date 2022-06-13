@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "Cygnito Mono";
+    src: url("/static/fonts/CygnitoMono.woff") format('woff'),
+         url("/static/fonts/CygnitoMono.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Noto Sans Mono";
+    src: url("/static/fonts/NotoSansMono.woff") format('woff'),
+         url("/static/fonts/NotoSansMono.woff2") format('woff2');
+}
+
+:root {
+    --border-color: #D1D9E6;
+    --shadow-dark-color: #D1D9E6;
+    --shadow-light-color: #FFFFFF;
+    --main-background-color: #FAF9F6;
+    --form-background-color: #F7F6F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: Noto Sans Mono;
+    background-color: var(--main-background-color);
+}
+
+main {
+    width: 100%;
+    display: flex;
+    margin-top: 90px;
+    overflow-y: scroll;
+    margin-bottom: 60px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_title {
+    font-size: 22px;
+    line-height: 70px;
+    text-align: center;
+    font-weight: normal;
+    font-family: Cygnito Mono;
+}
+
+.main_table {
+    width: auto;
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark-color), inset -6px -6px 12px var(--shadow-light-color);
+}
+
+.table_header {
+    width: auto;
+    display: flex;
+}
+
+.table_header .field {
+    padding: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#position, .position_field {
+    width: 100px;
+}
+
+.position_field p, #position {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#song_name, .song_name_field {
+    width: 280px;
+}
+
+#artist_name, .artist_name_field {
+    width: 280px;
+}
+
+#album_name, .album_name_field {
+    width: 230px;
+}
+
+#num_plays, .num_plays_field {
+    width: 180px;
+}
+
+.num_plays_field p, #num_plays {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table_body {
+    width: auto;
+    display: flex;
+}
+
+.tabla_data_value {
+    height: 50px;
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+    padding-left: 8px;
+    border-bottom: 1px solid var(--border-color);
+}

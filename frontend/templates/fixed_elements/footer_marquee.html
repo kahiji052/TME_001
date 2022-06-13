@@ -1,0 +1,21 @@
+<!-- Estilo marquee mostrando el nombre del proyecto -->
+<footer class="footer_marquee">
+    <ul class="marquee_content">
+        <li>Toy Model Engineering (BETA)</li>
+        <li>Toy Model Engineering (BETA)</li>
+        <li>Toy Model Engineering (BETA)</li>
+    </ul>
+</footer>
+
+<!-- Script para crear el efecto infinito de marquee -->
+<script>
+    const root = document.documentElement;
+    const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue("--marquee-elements");
+    const marqueeContent = document.querySelector("ul.marquee_content");
+
+    root.style.setProperty("--marquee-elements", marqueeContent.children.length);
+
+    for(let i = 0; i < marqueeElementsDisplayed; i++) {
+        marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+    }
+</script>

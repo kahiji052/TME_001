@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/top_ten.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header_nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer_marquee.css' %}">
+    <!-- Íconos -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/c01c9a85f3.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>TME_001</title>
+</head>
+<body>
+    {% include 'fixed_elements/header_nav.html' %}
+    <main>
+        <h2 class="main_title">Top Canciones</h2>
+        <div class="main_table">
+            <div class="table_header">
+                <div class="field" id="position">
+                    <span>Posición</span>
+                </div>
+                <div class="field" id="song_name">
+                    <span>Título</span>
+                </div>
+                <div class="field" id="artist_name">
+                    <span>Artista</span>
+                </div>
+                <div class="field" id="album_name">
+                    <span>Álbum</span>
+                </div>
+                <div class="field" id="num_plays">
+                    <span>Reproducciones</span>
+                </div>
+            </div>
+            <div class="table_body">
+                <div class = "position_field">
+                    {% for key, value in top_ten.song_name.items %}
+                        <p class="tabla_data_value">{{ key }}</p>
+                    {% endfor %}
+                </div>
+                <div class = "song_name_field">
+                    {% for key, value in top_ten.song_name.items %}
+                        <p class="tabla_data_value">{{ value }}</p>
+                    {% endfor %}
+                </div>
+                <div class = "artist_name_field">
+                    {% for key, value in top_ten.artist_name.items %}
+                        <p class="tabla_data_value">{{ value }}</p>
+                    {% endfor %}
+                </div>
+                <div class = "album_name_field">
+                    {% for key, value in top_ten.album_name.items %}
+                        <p class="tabla_data_value">{{ value }}</p>
+                    {% endfor %}
+                </div>
+                <div class = "num_plays_field">
+                    {% for key, value in top_ten.num_plays.items %}
+                        <p class="tabla_data_value">{{ value }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% comment %} <main>
+        <h2 class="main_title">Top Canciones</h2>
+        <div class="rows">
+            {% for key, value in top_ten.song_name.items %}
+                {% if key in '1, 2, 3, 4, 5' %}
+                    <div class="position_card">
+                        <h2 class="song_name">{{ value }}</h2>
+                        {% if key == '1' %}
+                            <p class="artist_name">{{ top_ten.artist_name.1 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.1 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.1 }} reproducciones</p>
+                        {% elif key == '2' %}
+                            <p class="artist_name">{{ top_ten.artist_name.2 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.2 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.2 }} reproducciones</p>
+                        {% elif key == '3' %}
+                            <p class="artist_name">{{ top_ten.artist_name.3 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.3 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.3 }} reproducciones</p>
+                        {% elif key == '4' %}
+                            <p class="artist_name">{{ top_ten.artist_name.4 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.4 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.4 }} reproducciones</p>
+                        {% elif key == '5' %}
+                            <p class="artist_name">{{ top_ten.artist_name.5 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.5 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.5 }} reproducciones</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="rows">
+            {% for key, value in top_ten.song_name.items %}
+                {% if key in '6, 7, 8, 9, 10' %}
+                    <div class="position_card" {% if key == '1' %}style="display: none;"{% endif %}>
+                        <h2 class="song_name">{{ value }}</h2>
+                        {% if key == '6' %}
+                            <p class="artist_name">{{ top_ten.artist_name.6 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.6 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.6 }} reproducciones</p>
+                        {% elif key == '7' %}
+                            <p class="artist_name">{{ top_ten.artist_name.7 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.7 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.7 }} reproducciones</p>
+                        {% elif key == '8' %}
+                            <p class="artist_name">{{ top_ten.artist_name.8 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.8 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.8 }} reproducciones</p>
+                        {% elif key == '9' %}
+                            <p class="artist_name">{{ top_ten.artist_name.9 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.9 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.9 }} reproducciones</p>
+                        {% elif key == '10' %}
+                            <p class="artist_name">{{ top_ten.artist_name.10 }}</p>
+                            <p class="album_name">{{ top_ten.album_name.10 }}</p>
+                            <p class="num_plays">{{ top_ten.num_plays.10 }} reproducciones</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div> {% endcomment %}
+    </main>
+    {% include 'fixed_elements/footer_marquee.html' %}
+</body>
+</html>

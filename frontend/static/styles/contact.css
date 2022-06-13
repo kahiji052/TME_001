@@ -1,0 +1,161 @@
+@font-face {
+    font-family: "Cygnito Mono";
+    src: url("/static/fonts/CygnitoMono.woff") format('woff'),
+         url("/static/fonts/CygnitoMono.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Noto Sans Mono";
+    src: url("/static/fonts/NotoSansMono.woff") format('woff'),
+         url("/static/fonts/NotoSansMono.woff2") format('woff2');
+}
+
+:root {
+    --border-color: #D1D9E6;
+    --shadow-dark-color: #D1D9E6;
+    --shadow-light-color: #FFFFFF;
+    --main-background-color: #FAF9F6;
+    --form-background-color: #F7F6F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: Noto Sans Mono;
+    background-color: var(--main-background-color);
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#flip_card {
+    width: 340px;
+    height: 360px;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+
+#flip_card:hover, #info_card {
+    transform: rotateY(180deg);
+}
+
+.contact_card {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    border: 1px solid var(--border-color);
+    background-color: var(--form-background-color);
+}
+
+#introduction_card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 6px 6px 12px var(--shadow-dark-color), -6px -6px 12px var(--shadow-light-color);
+}
+
+.card_image {
+    width: 140px;
+    height: 140px;
+    border-radius: 80px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark-color), inset -6px -6px 12px var(--shadow-light-color);
+}
+
+.card_body {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact_name {
+    font-weight: normal;
+}
+
+.contact_profession {
+    font-size: 14px;
+}
+
+#info_card {
+    box-shadow: -6px 6px 12px var(--shadow-dark-color), -6px -6px 12px var(--shadow-light-color);
+}
+
+.contact_labels p {
+    width: 510px;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+#contact_form {
+    display: flex;
+    padding: 30px;
+    border-radius: 8px;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    background-color: var(--form-background-color);
+    box-shadow: 6px 6px 12px var(--shadow-dark-color), -6px -6px 12px var(--shadow-light-color);
+}
+
+.input_data {
+    width: 250px;
+    height: 30px;
+    outline: none;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark-color), inset -3px -3px 7px var(--shadow-light-color);
+}
+
+#input_message {
+    width: 510px;
+    height: 80px;
+    max-width: 510px;
+    max-height: 80px;
+    min-width: 510px;
+    min-height: 80px;
+    padding-top: 6px;
+}
+
+.btn_content {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+/* Estilos para botón de formulario */
+.form_btn {
+    width: 180px;
+    height: 30px;
+    cursor: pointer;
+    font-family: Noto Sans Mono;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    box-shadow: 3px 3px 6px var(--shadow-dark-color), -3px -3px 6px var(--shadow-light-color);
+}
+
+.form_btn:hover {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark-color), inset -3px -3px 7px var(--shadow-light-color);
+}

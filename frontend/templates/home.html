@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header_nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer_marquee.css' %}">
+    <!-- Íconos -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/c01c9a85f3.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>TME_001</title>
+</head>
+<body>
+    {% include 'fixed_elements/header_nav.html' %}
+
+    <main>
+        <div class="main_header">
+            <form action="update_data" method="post" class="home_form" id="update_form">
+                {% csrf_token %}
+                <button 
+                type="submit" id="update_btn" name="update_btn" class="form_btn">Actualizar</button>
+                <span id="update_span" 
+                style="{% if first_login == None %} display: none; {% endif %}">
+                   {{ date_update | timeuntil }} left for update.
+                </span>
+            </form>
+        </div>
+
+        <div class="main_body">
+            <div id="options">
+                <form action="{% url 'spotify:get_top_ten' %}" method="post" class="home_form">
+                    {% csrf_token %}
+                    <button type="submit" id="send_top" name="send_top" class="form_btn">Top canciones</button>
+                </form>
+                <form action="{% url 'spotify:get_top_artists' %}" method="post" class="home_form">
+                    {% csrf_token %}
+                    <button type="submit" id="send_top" name="send_top" class="form_btn">Top artistas</button>
+                </form>
+                <form action="{% url 'spotify:get_top_albums' %}" method="post" class="home_form">
+                    {% csrf_token %}
+                    <button type="submit" id="send_top" name="send_top" class="form_btn">Top álbumes</button>
+                </form>
+                <form action="{% url 'spotify:get_user_history' %}" method="post" class="home_form">
+                    {% csrf_token %}
+                    <button type="submit" id="send_top" name="send_top" class="form_btn">Historial</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    {% include 'fixed_elements/footer_marquee.html' %}
+</body>
+</html>
+

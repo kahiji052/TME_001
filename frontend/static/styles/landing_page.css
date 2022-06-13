@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Cygnito Mono";
+    src: url("/static/fonts/CygnitoMono.woff") format('woff'),
+         url("/static/fonts/CygnitoMono.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Noto Sans Mono";
+    src: url("/static/fonts/NotoSansMono.woff") format('woff'),
+         url("/static/fonts/NotoSansMono.woff2") format('woff2');
+}
+
+:root {
+    --border-color: #D1D9E6;
+    --shadow-dark-color: #D1D9E6;
+    --shadow-light-color: #FFFFFF;
+    --main-background-color: #FAF9F6;
+    --form-background-color: #F7F6F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Noto Sans Mono;
+    background-color: var(--main-background-color);
+}
+
+main {
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+    margin-bottom: 60px;
+    align-items: center;
+    justify-content: center;
+}
