@@ -23,7 +23,7 @@
         <div class="main_header">
             <form action="update_data" method="post" class="home_form" id="update_form">
                 {% csrf_token %}
-                <button 
+                <button {% if first_login != None %}disabled="disabled"{% endif %}
                 type="submit" id="update_btn" name="update_btn" class="form_btn">Actualizar</button>
                 <span id="update_span" 
                 style="{% if first_login == None %} display: none; {% endif %}">
